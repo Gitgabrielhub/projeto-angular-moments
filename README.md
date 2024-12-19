@@ -1,27 +1,29 @@
-# Angular
+# Reactive forms:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.10.
+utilizando formularios reativos no angular: 
+- importar formsModule e reactiveFormsModule no arquivo app module caso a versão do angular seja inferior a 14 e nao possua o recurso de standalone.
+- em seguida capiturar o envio de formulario atraves de um evento chamado (ngSubmit)="submit()".
+- colocar a diretiva na tag <form [formGroup] = "nomeDoGROUP" #formDir="ngForm"> => #formDir="ngForm" (usado para criar referencia a um formulario no angular permitindo que os recursos e dados do formulario sejam acessados de maneira programatica) 
 
-## Development server
+- após fazer as referencias do formControl foi feito a referencia em cada input com a doretiva formControlName="nome".
+    essa doretiva referência o dado que esta sendo inserido e salvando em uma variavel dentro do componente.ts.
+# arquivo TS do componente de formulario.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- vamos criar a propriedade que nomeamos na <form [formGoup]="dadosForm"></form>. 
+    dadosForm=FormGroup;
 
-## Code scaffolding
+    -dentro do metodo NgOnInit temos que instanciar o dadosForm e inicializar o formulario, fazendo a chamada de dados e colocando o recurso de validação chamado VALIDATORS.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    ngOnInit(): void {
+    this.dadosForm = new FormGroup({
+      id: new FormControl(''),
+      title: new FormControl('', [Validators.required]),
+      description: new FormControl('',[Validators.required]),
+      image: new FormControl('')
+    })
+   } 
+- ainda assim ele me gerara um erro falando que as propriedades nao existem por isso é preciso fazer um get com o nome da propriedade.
+    get title(){
+        return this.momentForm.get('title')!;
+    }
