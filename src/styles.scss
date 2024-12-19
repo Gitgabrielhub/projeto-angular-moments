@@ -39,3 +39,18 @@ form{
     font-size: 1em;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+input[type="submit"]{
+    background-color: #dec129;
+    border: 2px solid transparent;
+    padding: .6em 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+input[type="submit"]:hover{
+    background-color: #ccc;
+}
+.validation-error p{
+    color: red;
+    font-size: 0.8em;
+    margin-top: 0.2em;
+}
