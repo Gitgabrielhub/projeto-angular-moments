@@ -1,6 +1,9 @@
 import { formatDate } from '@angular/common';
 import { Component } from '@angular/core';
 import { Moment } from 'src/app/Moment';
+import { MomentService } from 'src/app/services/moment.service';
+import { MessageService } from 'src/app/services/message.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-moment',
@@ -9,8 +12,9 @@ import { Moment } from 'src/app/Moment';
 })
 export class NewMomentComponent {
   btnText="Compartilhar";
+ 
 
-  constructor(){}
+  constructor(private momentService:MomentService, private messageService: MessageService, private router:Router ){}
   ngOnInit(): void { 
   }
 
@@ -22,5 +26,14 @@ export class NewMomentComponent {
     if(moment.image){
       formDta.append('image', moment.image);
     }
+
+    await this.momentService.createMoment(formDta).subscribe();
+
+    this.momentService.getMoments().subscribe(data=>{
+      console.log(data)
+    })
+    this.messageService.add("momento adicionado com sucesso")
+    this.router.navigate(['/']);
   }
+
 }

@@ -14,6 +14,7 @@ import { AboutComponent } from './componentes/pages/about/about.component';
 import { HomeComponent } from './componentes/pages/home/home.component';
 import { NewMomentComponent } from './componentes/pages/new-moment/new-moment.component';
 import { MomentFormComponent } from './componentes/moment-form/moment-form.component';
+import { MessagesComponent } from './componentes/messages/messages.component';
 
 
 
@@ -25,14 +26,16 @@ import { MomentFormComponent } from './componentes/moment-form/moment-form.compo
     AboutComponent,
     HomeComponent,
     NewMomentComponent,
-    MomentFormComponent
+    MomentFormComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

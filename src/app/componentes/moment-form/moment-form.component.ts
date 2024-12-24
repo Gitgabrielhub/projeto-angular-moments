@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup,Validators } from '@angular/forms';
 import { Moment } from 'src/app/Moment';
+import { MomentService } from 'src/app/services/moment.service';
+
 
 @Component({
   selector: 'app-moment-form',
@@ -12,8 +14,9 @@ export class MomentFormComponent {
   @Input() btnText!: string;
 
   momentForm!:FormGroup 
+  items: Moment[]= []
   
-  constructor() { }
+  constructor(private service:MomentService) { }
 
   ngOnInit(): void {
     this.momentForm = new FormGroup({
@@ -38,17 +41,27 @@ export class MomentFormComponent {
     this.momentForm.patchValue({image:file})
 
    }
-  submit(){
+
+   
+   submit(){
    
     if(this.momentForm.invalid){
       return;
     }
     const saveData = JSON.stringify(this.momentForm.value)
-    console.log(saveData)
+    //console.log(saveData)
     localStorage.setItem('DataUser', String(saveData))
 
     this.onSubmit.emit(this.momentForm.value)
     
+    this.pegarDados();
+    
+  }
+  pegarDados(){
+    this.service.getMoments().subscribe(data=>{
+      this.items.push(data)
+      
+    })
     
   }
   
