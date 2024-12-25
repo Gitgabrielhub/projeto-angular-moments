@@ -54,16 +54,8 @@ export class MomentFormComponent {
 
     this.onSubmit.emit(this.momentForm.value)
     
-    this.pegarDados();
-    
   }
-  pegarDados(){
-    this.service.getMoments().subscribe(data=>{
-      this.items.push(data)
-      
-    })
-    
-  }
+ 
   
 
 }
