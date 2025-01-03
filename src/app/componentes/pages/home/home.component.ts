@@ -49,8 +49,13 @@ export class HomeComponent {
     }
   }
   deleteMoment(id: number): void {
-    this.serviceMoment.deleteMoment(id).subscribe(() => {
-      this.moments = this.moments.filter((moment) => moment.id !== id);
+    this.serviceMoment.deleteMoment(id).subscribe({
+      next:()=>{
+        this.moments = this.moments.filter((moment) => moment.id !== id);
+      },
+      error:(err)=>{
+        alert(`erro ${err} ao tentar excluir tratar. erro ${err}`)
+      }
     });
 
   }
