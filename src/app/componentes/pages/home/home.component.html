@@ -8,6 +8,10 @@
                 <p class="date">Em: {{ item.createdAt }}</p>
                 <p>Comentarios: {{ item.comments!.length}}</p>
                 <p routerLink="moments/{{ item.id }}"></p>
+                <div>
+                    <button (click)="curtir()" > {{curtidas}} - {{ nomenclatura }}</button>
+                    <button (descurtir)="deslike()">{{descurtidas}}-{{nomenclaturaDeslike}}</button> 
+                </div>
                 
             </div>
         </div>

@@ -22,4 +22,7 @@ export class MomentService {
   getMoments():Observable<Response<Moment[]>>{
     return this.http.get<Response<Moment[]>>(this.apiUrl)
   }
+  insertLike(){
+
+  }
 }
