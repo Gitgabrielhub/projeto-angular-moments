@@ -10,7 +10,8 @@
                 <p routerLink="moments/{{ item.id }}"></p>
                 <div>
                     <button (click)="curtir()" > {{curtidas}} - {{ nomenclatura }}</button>
-                    <button (descurtir)="deslike()">{{descurtidas}}-{{nomenclaturaDeslike}}</button> 
+                    <button (click)="deslike()">{{descurtidas}}-{{nomenclaturaDeslike}}</button>
+                    <button (click)="deleteMoment(item.id!)">Excluir</button>
                 </div>
                 
             </div>

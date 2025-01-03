@@ -48,4 +48,10 @@ export class HomeComponent {
       this.nomenclaturaDeslike = 'deslikes';
     }
   }
+  deleteMoment(id: number): void {
+    this.serviceMoment.deleteMoment(id).subscribe(() => {
+      this.moments = this.moments.filter((moment) => moment.id !== id);
+    });
+
+  }
 }

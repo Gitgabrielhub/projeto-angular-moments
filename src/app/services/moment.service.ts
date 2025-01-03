@@ -22,7 +22,9 @@ export class MomentService {
   getMoments():Observable<Response<Moment[]>>{
     return this.http.get<Response<Moment[]>>(this.apiUrl)
   }
-  insertLike(){
-
+  
+  deleteMoment(id: number): Observable<Moment> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete<Moment>(url);
   }
 }
