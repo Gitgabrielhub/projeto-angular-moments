@@ -1,5 +1,12 @@
 <div class="homeContainer">
     <h1>Veja o que estão compartilhando</h1>
+    <div class="search-container">
+        
+       <form action="">
+            <label for="">Pesquisar momento</label>
+            <input type="search" name="" id="" (input)="search($event)">
+       </form>
+    </div>
     <div *ngIf="moments.length > 0; else noMoments">
         <div class="moments-container" > 
             <div class="moment" *ngFor="let item of moments">
@@ -7,6 +14,7 @@
                 <h3>{{ item.title }}</h3>
                 <p class="date">Em: {{ item.createdAt }}</p>
                 <p>Comentarios: {{ item.comments!.length}}</p>
+                <p> {{item.description}}</p>
                 <p routerLink="moments/{{ item.id }}"></p>
                 <div>
                     <button (click)="curtir()" > {{curtidas}} - {{ nomenclatura }}</button>

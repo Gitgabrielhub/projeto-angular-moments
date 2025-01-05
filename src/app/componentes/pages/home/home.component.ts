@@ -48,6 +48,13 @@ export class HomeComponent {
       this.nomenclaturaDeslike = 'deslikes';
     }
   }
+  /*
+    deleteMoment(id: number): void {
+    this.serviceMoment.deleteMoment(id).subscribe(() => {
+        this.moments = this.moments.filter((moment) => moment.id !== id);
+    });
+} 
+  */
   deleteMoment(id: number): void {
     this.serviceMoment.deleteMoment(id).subscribe({
       next:()=>{
@@ -56,6 +63,17 @@ export class HomeComponent {
       error:(err)=>{
         alert(`erro ${err} ao tentar excluir tratar. erro ${err}`)
       }
+    });
+
+  }
+  search(event:Event): void {
+    const target = event.target as HTMLInputElement;
+    const value = target.value.toLowerCase();
+    this.moments = this.allMomoments.filter((moment) => {
+      return (
+        moment.title.toLowerCase().includes(value) ||
+        moment.description.toLowerCase().includes(value)
+      );
     });
 
   }
